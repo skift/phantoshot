@@ -24,7 +24,9 @@ describe Phantoshot do
       context "image production" do 
 
          it "should return an image_data attribute in the data_hash" do 
-           expect( make_screenshot(HTML_FIXTURE_FILE).image_data ).to be_a String            
+
+           hsh = make_screenshot(HTML_FIXTURE_FILENAME)
+           expect( hsh.image_data ).to be_a String            
          end
 
       end
