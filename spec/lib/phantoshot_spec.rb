@@ -21,6 +21,15 @@ describe Phantoshot do
          end
       end
 
+      context "image production" do 
+
+         it "should return an image_data attribute in the data_hash" do 
+            # mock example.png
+            # make_screenshot('example.png').image_data == example.png 
+         end
+
+      end
+
       context "call with parameters" do 
          it "should accept width option"
          it "should accept height option"

@@ -1,4 +1,6 @@
 require 'phantoshot'
+require 'fakeweb'
+
 
 
 RSpec.configure do |config|

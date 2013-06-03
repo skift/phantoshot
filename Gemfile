@@ -6,4 +6,5 @@ gemspec
 group :development do 
      gem 'foreman', require: false
      gem 'rspec', "~>2.8"
+     gem 'fakeweb'
 end

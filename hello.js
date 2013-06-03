@@ -1,5 +1,5 @@
 var page = require('webpage').create();
-page.open('http://github.com/', function () {
-    page.render('github.png');
+page.open('some.html', function () {
+    page.render('example.png');
     phantom.exit();
 });
