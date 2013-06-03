@@ -8,4 +8,6 @@ group :development do
      gem 'rspec', "~>2.8"
      gem 'fakeweb'
      gem 'pry'
+     gem 'fastimage'
+
 end

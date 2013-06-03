@@ -22,18 +22,36 @@ describe Phantoshot do
       end
 
       context "image production" do 
-
          it "should return an image_data attribute in the data_hash" do 
-
            hsh = make_screenshot(HTML_FIXTURE_FILENAME)
            expect( hsh.image_data ).to be_a String            
          end
-
       end
 
+
       context "call with parameters" do 
-         it "should accept width option"
-         it "should accept height option"
+         before(:each) do 
+            @imgfile = Tempfile.new('foo.png')
+         end
+
+
+         it "should accept width and height options" do 
+            imgdata = make_screenshot(HTML_FIXTURE_FILENAME, width: 600, height: 400).image_data
+ 
+            @imgfile.write( imgdata )
+            @imgfile.close
+
+            expect( FastImage.size(@imgfile.path)[0] ).to eq 600
+            expect( FastImage.size(@imgfile.path)[1] ).to eq 400
+
+         end
+
+
+#         it "should accept height option"
+
+         after(:each) do 
+            @imgfile.unlink
+         end
       end
 
    end
