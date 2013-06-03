@@ -1,5 +1,6 @@
-def make_screenshot
-  `phantomjs hello.js`
-end
+require 'pry'
+require 'cgi'
 
-make_screenshot
+def make_screenshot(url)
+  `phantomjs hello.js #{url}`
+end
