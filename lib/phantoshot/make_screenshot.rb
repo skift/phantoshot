@@ -1,18 +1,22 @@
 
 module Phantoshot
-   def make_screenshot(url, opts={})      
-      res = MultiJson.load( phantom_command(url) )  
+   def make_screenshot(url, opts={})
+
+      width = opts[:height] || 600
+      height = opts[:height] || 400
+
+      res = MultiJson.load( phantom_command(url, width, height) )
 
       hsh = Hashie::Mash.new(res)
       hsh.image_data = Base64.decode64( hsh.image_data )
       
-      return hsh 
+      return hsh
    end
 
 
    # returns JSON string
-   def phantom_command(url)
-      cmd = "phantomjs #{JS_LIB_NAME} #{url}"
+   def phantom_command(url, width, height)
+      cmd = "phantomjs #{JS_LIB_NAME} #{url} #{width} #{height}"
       `#{cmd}`
    end
 end

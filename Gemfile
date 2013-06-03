@@ -9,5 +9,7 @@ group :development do
      gem 'fakeweb'
      gem 'pry'
      gem 'fastimage'
+     gem 'debugger'
+     gem 'better_errors'
 
 end
