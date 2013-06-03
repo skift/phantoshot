@@ -34,17 +34,20 @@ describe Phantoshot do
             @imgfile = Tempfile.new('foo.png')
          end
 
-
          it "should accept width and height options" do 
-            imgdata = make_screenshot(HTML_FIXTURE_FILENAME, width: 600, height: 400).image_data
- 
-            @imgfile.write( imgdata )
+            response_hash = make_screenshot(HTML_FIXTURE_FILENAME, width: 600, height: 400).image_data
+            
+            ## let's have the hash contain height, width attributes
+            expect(response_hash.width).to eq 600
+            expect(response_hash.height).to eq 400
+
+            @imgfile.write( response_hash.imgdata )
             @imgfile.close
 
             expect( FastImage.size(@imgfile.path)[0] ).to eq 600
             expect( FastImage.size(@imgfile.path)[1] ).to eq 400
-
          end
+
 
 
 #         it "should accept height option"
