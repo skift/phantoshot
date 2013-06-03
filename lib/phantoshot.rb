@@ -4,5 +4,9 @@ require "phantoshot/make_screenshot"
 require 'hashie'
 
 module Phantoshot
-  # Your code goes here...
+
+   JS_LIB_NAME = File.join(File.dirname(__FILE__), "/phantom-shot-script.js")
+
+
+
 end

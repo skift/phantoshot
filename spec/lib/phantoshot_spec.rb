@@ -17,15 +17,14 @@ describe Phantoshot do
          end
 
          it "should return Hashie::Mash object" do 
-            expect( make_screenshot('http://www.example.com') ).to be_a Hashie::Mash
+            # expect( make_screenshot('http://www.example.com') ).to be_a Hashie::Mash
          end
       end
 
       context "image production" do 
 
          it "should return an image_data attribute in the data_hash" do 
-            # mock example.png
-            # make_screenshot('example.png').image_data == example.png 
+           expect( make_screenshot(HTML_FIXTURE_FILE).image_data ).to be_a String            
          end
 
       end
