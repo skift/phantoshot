@@ -1,4 +1,3 @@
-
 module Phantoshot
    def make_screenshot(url, opts={})
 

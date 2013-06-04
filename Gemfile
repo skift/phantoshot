@@ -11,5 +11,4 @@ group :development do
      gem 'fastimage'
      gem 'debugger'
      gem 'better_errors'
-
 end
