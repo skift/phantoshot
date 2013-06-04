@@ -50,14 +50,18 @@ describe Phantoshot do
             expect( FastImage.size(@imgfile.path)[1] ).to eq 200
          end
 
-
-
-#         it "should accept height option"
-
          after(:each) do 
             @imgfile.unlink
          end
       end
+
+
+      context "Error handling: should have an :error attribute when phantom_command fails" do 
+
+         it "should return 'Error': Invalid source address' when nonexistent address is given"
+
+      end
+
 
    end
 end
