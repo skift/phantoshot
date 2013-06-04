@@ -35,17 +35,19 @@ describe Phantoshot do
          end
 
          it "should accept width and height options" do
-            response = make_screenshot(HTML_FIXTURE_FILENAME, width: 600, height: 400)
+            response = make_screenshot(HTML_FIXTURE_FILENAME, width: 300, height: 200)
             
             ## let's have the hash contain height, width attributes
-            expect(response.width).to eq 600
-            expect(response.height).to eq 400
+            expect(response.width).to eq 300
+            expect(response.height).to eq 200
+            expect(response.url).to eq HTML_FIXTURE_FILENAME
+            expect(response.file_format).to eq 'PNG'
 
             @imgfile.write( response.image_data )
             @imgfile.close
 
-            expect( FastImage.size(@imgfile.path)[0] ).to eq 600
-            expect( FastImage.size(@imgfile.path)[1] ).to eq 400
+            expect( FastImage.size(@imgfile.path)[0] ).to eq 300
+            expect( FastImage.size(@imgfile.path)[1] ).to eq 200
          end
 
 

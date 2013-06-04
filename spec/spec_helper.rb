@@ -2,8 +2,6 @@ require 'phantoshot'
 require 'fakeweb'
 require 'fastimage'
 require 'tempfile'
-require 'debugger'
-require 'better_errors'
 
 HTML_FIXTURE_FILENAME = File.expand_path "./spec/fixtures/example-fixture.html"
 
