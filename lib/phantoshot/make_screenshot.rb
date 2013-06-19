@@ -1,6 +1,6 @@
 module Phantoshot
-require 'rmagick'
-include Magick
+require 'mini_magick'
+include MiniMagick
 
    def make_screenshot(url, opts={})
 
@@ -22,16 +22,15 @@ include Magick
       tempfile.write(hsh[:image_data])
       tempfile.close
 
-      img = Image.read(tempfile.path)[0]
-      org_width = img.columns
-      org_height = img.rows
+      img = MiniMagick::Image.open(tempfile.path)
 
-      if desired_width
-         img = img.resize_to_fit(desired_width, org_height)
+
+      if desired_width && desired_width < img[:width]
+         img.resize(desired_width)
       end
 
-      if desired_height
-         img = img.crop(0, 0, img.columns, desired_height)
+      if !desired_height.nil? && desired_height < img[:height]
+         img.crop("#{img[:width]}x#{desired_height}+0+0")
       end
 
       tempfile2 = Tempfile.new('bar.png')
@@ -41,6 +40,8 @@ include Magick
 
       tempfile2.close
 
+      hsh[:width] = img[:width]
+      hsh[:height] = img[:height]
       hsh[:image_data] = open(tempfile2.path){ |f| f.read }
       return hsh
    end
