@@ -14,9 +14,11 @@ include Magick
       hsh = Hashie::Mash.new(res)
 
       # Decode it for writing out to binary
-      hsh[:image_data] = Base64.decode64( hsh[:image_data] )    
+      hsh[:image_data] = Base64.decode64( hsh[:image_data] )   
 
       tempfile = Tempfile.new('foo.png')
+      tempfile.binmode
+
       tempfile.write(hsh[:image_data])
       tempfile.close
 
@@ -33,6 +35,7 @@ include Magick
       end
 
       tempfile2 = Tempfile.new('bar.png')
+      tempfile2.binmode
 
       img.write(tempfile2.path)
 
