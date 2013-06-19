@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_dependency "hashie"
   spec.add_dependency "multi_json"
+  spec.add_dependency 'mini_magick'
 
 
 end
